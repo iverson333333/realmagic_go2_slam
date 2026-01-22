@@ -9,8 +9,8 @@ class TalkerNode : public rclcpp::Node
 public:
     TalkerNode() : Node("talker_node"), count_(0)
     {
-        // 创建发布器，发布到 /chatter 话题
-        publisher_ = this->create_publisher<std_msgs::msg::String>("chatter", 10);
+        // 创建发布器，发布到 /lyq_chatter 话题
+        publisher_ = this->create_publisher<std_msgs::msg::String>("lyq_chatter", 10);
 
         // 创建定时器，每500毫秒发布一次消息
         timer_ = this->create_wall_timer(
