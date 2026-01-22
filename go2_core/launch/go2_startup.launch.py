@@ -19,6 +19,14 @@ def generate_launch_description():
     # 设置配置文件路径
     rviz_config_path = os.path.join(go2_core_dir, 'config', 'default.rviz')
 
+    # 0. 启动talker节点
+    talker_node = Node(
+        package='go2_talker',
+        executable='talker_node',
+        name='talker_node',
+        output='screen'
+    )
+
     # 1. 启动基础节点
     go2_base_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
@@ -64,6 +72,7 @@ def generate_launch_description():
         output='screen'
     )
 
+    ld.add_action(talker_node)
     ld.add_action(go2_base_launch)
     ld.add_action(pointcloud_process_launch)
     ld.add_action(slam_toolbox_launch)
