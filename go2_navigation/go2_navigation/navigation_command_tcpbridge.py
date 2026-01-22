@@ -2,7 +2,7 @@
 import rclpy
 from rclpy.node import Node
 from nav2_msgs.action import NavigateToPose
-from rclpy.action import ActionClient
+from rclpy.action.client import ActionClient
 import socket
 import json
 import threading
