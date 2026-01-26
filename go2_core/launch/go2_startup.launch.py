@@ -72,7 +72,7 @@ def generate_launch_description():
         output='screen'
     )
 
-    ld.add_action(talker_node)
+    # ld.add_action(talker_node)
     ld.add_action(go2_base_launch)
     ld.add_action(pointcloud_process_launch)
     ld.add_action(slam_toolbox_launch)

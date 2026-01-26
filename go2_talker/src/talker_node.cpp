@@ -15,11 +15,12 @@ public:
         // 创建定时器，每500毫秒发布一次消息
         timer_ = this->create_wall_timer(
             500ms,
-            std::bind(&TalkerNode::timer_callback, this));
+            [this]()
+            { timer_callback(); });
 
         RCLCPP_INFO(this->get_logger(), "Talker node has been started.");
     }
-
+ 
 private:
     void timer_callback()
     {
