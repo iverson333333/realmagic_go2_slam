@@ -10,6 +10,13 @@ import os
 def generate_launch_description():
     ld = LaunchDescription()
 
+    # 声明参数：选择 SLAM 模式（mapping 或 localization）
+    slam_mode_arg = DeclareLaunchArgument(
+        'slam_mode',
+        default_value='mapping',
+        description='SLAM mode: mapping or localization'
+    )
+
     # 获取包路径
     go2_core_dir = get_package_share_directory('go2_core')
     go2_navigation_dir = get_package_share_directory('go2_navigation')
@@ -49,11 +56,16 @@ def generate_launch_description():
         ])
     )
 
-    # 3. 启动SLAM工具箱
+    # 3. 启动SLAM工具箱（根据模式选择不同的配置）
+    slam_config = LaunchConfiguration('slam_mode')
+    
     slam_toolbox_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(go2_slam_dir, 'launch', 'go2_slamtoolbox.launch.py')
-        ])
+        ]),
+        launch_arguments={
+            'mode': slam_config,
+        }.items()
     )
 
     # 4. 启动导航系统
@@ -72,6 +84,8 @@ def generate_launch_description():
         output='screen'
     )
 
+    # 添加launch动作
+    ld.add_action(slam_mode_arg)  # 添加参数声明
     # ld.add_action(talker_node)
     ld.add_action(go2_base_launch)
     ld.add_action(pointcloud_process_launch)
