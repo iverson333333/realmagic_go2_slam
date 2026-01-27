@@ -15,8 +15,8 @@ slam_toolbox:
     base_frame: base_link
     scan_topic: /scan
     mode: localization
-    # 使用保存的地图进行定位 - 文件名就是空（因为您保存的是 .data 和 .posegraph）
-    map_file_name: /home/realmagic/go2_ros2_ws/src/go2_ros2_toolbox/user_map/
+    
+    map_file_name: /home/realmagic/go2_ros2_ws/src/go2_ros2_toolbox/user_map/my_map
     # 如果机器人位置已知，可以设置初始位置（x, y, theta）
     # map_start_pose: [0.0, 0.0, 0.0]
     #map_start_at_dock: true
