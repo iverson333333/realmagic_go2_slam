@@ -9,5 +9,6 @@
         "/home/realmagic/go2_ros2_ws/install/go2_navigation/lib/python3.8/site-packages",
         "/home/realmagic/go2_ros2_ws/install/go2_core/lib/python3.8/site-packages"
     ],
-    "python.languageServer": "Pylance"
+    "python.languageServer": "Pylance",
+    "cmake.sourceDirectory": "/home/realmagic/go2_ros2_ws/src/go2_ros2_toolbox/go2_core"
 }
