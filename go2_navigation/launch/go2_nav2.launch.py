@@ -37,7 +37,7 @@ def generate_launch_description():
     )
 
     # 添加launch动作
-    ld.add_action(amcl_launch)
+    #ld.add_action(amcl_launch)
     ld.add_action(nav2_launch)
 
     return ld

@@ -188,7 +188,3 @@ python3 tcp_nav_client.py --run
 python3 tcp_nav_client.py --host 192.168.1.50 --x 3.0 --y 2.0 --w 45
 ```
 
-**批量远程测试：**
-```bash
-python3 tcp_nav_client.py --batch --host 192.168.1.50
-```

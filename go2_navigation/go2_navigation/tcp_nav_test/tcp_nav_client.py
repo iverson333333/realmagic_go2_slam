@@ -255,8 +255,7 @@ def main():
                            help='运行模式: 连接远程服务器')
     mode_group.add_argument('--interactive', '-i', action='store_true',
                            help='交互模式: 交互式输入')
-    mode_group.add_argument('--batch', action='store_true',
-                           help='批量模式: 批量发送测试数据')
+
     
     # 连接参数
     parser.add_argument('--host', type=str, default='127.0.0.1',
@@ -283,27 +282,6 @@ def main():
     
     elif args.interactive:
         interactive_mode()
-    
-    elif args.batch:
-        print('=' * 60)
-        print(f'批量测试模式 - 目标服务器: {args.host}:{args.port}')
-        print('=' * 60)
-        
-        # 测试多个目标点
-        test_goals = [
-            (1.0, 0.0, 0.0, '点1: 东方1米'),
-            (0.0, 1.0, 90.0, '点2: 北方1米'),
-            (-1.0, 0.0, 180.0, '点3: 西方1米'),
-            (0.0, -1.0, 270.0, '点4: 南方1米'),
-            (2.0, 2.0, 45.0, '点5: 东北方'),
-        ]
-        
-        for x, y, w, desc in test_goals:
-            print(f'\n--- {desc} ---')
-            send_navigation_goal(args.host, args.port, x, y, w)
-            time.sleep(1)  # 间隔1秒
-        
-        print('\n批量测试完成！')
     
     else:
         # 默认: 命令行模式 - 发送单个目标点
